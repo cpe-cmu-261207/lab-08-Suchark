@@ -18,12 +18,18 @@ export default function Home() {
     //copy from old 2d Array
     const newPixels = CanvasLib.copyCanvas(pixels);
     //your code here
+    //อัปเดตค่า Arr newPixels[...][...]
+    newPixels[yPos][xPos] = selColor;
+    setPixels(newPixels);
   };
 
   const clear = () => {
+    setPixels(CanvasLib.createEmptyCanvas());
+
     //your code here
-    //Hint : use CanvasLib.createEmptyCanvas()
   };
+
+  //Hint : use CanvasLib.createEmptyCanvas()
 
   return (
     <div style={{ minHeight: "100vh", backgroundColor: "GhostWhite" }}>
@@ -36,7 +42,12 @@ export default function Home() {
           <button className="btn btn-dark" onClick={clear}>
             Clear
           </button>
-          <button className="btn btn-dark">Random Color</button>
+          <button
+            className="btn btn-dark"
+            onClick={() => setPixels(CanvasLib.createRandomCanvas())}
+          >
+            Random Color
+          </button>
         </div>
       </PainterContext.Provider>
     </div>
